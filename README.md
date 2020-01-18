@@ -42,3 +42,24 @@ The final change is the logback.xml, to publish the logs to LogStash. The append
 All the services that need to use the Distributed Tracing feature, will need the above three changes / additions.
 
 use Zipkin to analyze latency in the service calls. Also Sleuth can help us creating the metadata and pass it to Zipkin.
+
+
+
+ELK stack configuration
+All these three tools are based on JVM and before start installing them, please verify that JDK has been properly configured. Check that standard JDK 1.8 installation, JAVA_HOME and PATH set up is already done.
+
+2.1. Elasticsearch
+Download latest version of Elasticsearch from this download page and unzip it any folder.
+Run bin\elasticsearch.bat from command prompt.
+By default, it would start at http://localhost:9200
+2.2. Kibana
+Download the latest distribution from download page and unzip into any folder.
+Open config/kibana.yml in an editor and set elasticsearch.url to point at your Elasticsearch instance. In our case as we will use the local instance just uncomment elasticsearch.url: "http://localhost:9200"
+Run bin\kibana.bat from command prompt.
+Once started successfully, Kibana will start on default port 5601 and Kibana UI will be available at http://localhost:5601
+2.3. Logstash
+Download the latest distribution from download page and unzip into any folder.
+Create one file logstash.conf as per configuration instructions. We will again come to this point during actual demo time for exact configuration.
+Now run bin/logstash -f logstash.conf to start logstash
+
+ELK stack is not up and running. Now we need to create few microservices and point logstash to the API log path.
