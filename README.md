@@ -52,7 +52,7 @@ To enable Sleuth, Zipkin and ELK stack, we need to make the below changes on all
 
     The second change is to add the URL, in the application.properties for spring to publish data to Zipkin.
 
-    The final change is the logback.xml, to publish the logs to LogStash. The appender publishes all the logs to Logstash running on port 5044, using an Async TCP Appender. Again as mentioned above Beats can be used to ship logs to Logstash too.
+    The final change is the logback.xml, to publish the logs to LogStash. The appender publishes all the logs to Logstash running on port 5044, using an Async TCP Appender / File Appender. Again as mentioned above Beats can be used to ship logs to Logstash too.
 
 All the services that need to use the Distributed Tracing feature, will need the above three changes / additions.
 
