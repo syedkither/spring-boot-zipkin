@@ -86,17 +86,17 @@ All these three tools are based on JVM and before start installing them, please 
 		ignore_older => "37 d"
         codec => "json"
         type => "logback"
-    }
-}
+   	 }
+	}
  
-output {
-    if [type]=="logback" {
-         elasticsearch {
-             hosts => [ "localhost:9200" ]
-             index => "logback-%{+YYYY.MM.dd}"
-        }
-    }
-}
+	output {
+	    if [type]=="logback" {
+		 elasticsearch {
+		     hosts => [ "localhost:9200" ]
+		     index => "logback-%{+YYYY.MM.dd}"
+		}
+	    }
+	}
     
 Now run logstash -f logstash.conf to start logstash and make sure system path variable is set for logstash bin folder
 
