@@ -76,6 +76,27 @@ All these three tools are based on JVM and before start installing them, please 
 3. Logstash
     Download the latest distribution from download page and unzip into any folder.
     Create one file logstash.conf as per configuration instructions. We will again come to this point during actual demo time for exact configuration.
+  
+ logstash.conf
+ ----------------------
+    input {
+    file {
+        path => "B:/logback/*.log"		
+		mode => "read"
+		ignore_older => "37 d"
+        codec => "json"
+        type => "logback"
+    }
+}
+ 
+output {
+    if [type]=="logback" {
+         elasticsearch {
+             hosts => [ "localhost:9200" ]
+             index => "logback-%{+YYYY.MM.dd}"
+        }
+    }
+}
     
 Now run logstash -f logstash.conf to start logstash and make sure system path variable is set for logstash bin folder
 
