@@ -77,8 +77,8 @@ All these three tools are based on JVM and before start installing them, please 
     Download the latest distribution from download page and unzip into any folder.
     Create one file logstash.conf as per configuration instructions. We will again come to this point during actual demo time for exact configuration.
   
- logstash.conf
- ----------------------
+ logstash.conf - FILE
+
     input {
     file {
         path => "B:/logback/*.log"		
